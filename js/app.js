@@ -2,7 +2,7 @@
 /* PhytoVision AI frontend */
 'use strict';
 
-const API_BASE = 'https://disease-detection-z5y9.onrender.com';
+const API_BASE = 'https://leaflens-datv.onrender.com';
 const MAX_BYTES = 5 * 1024 * 1024;
 
 const DISEASE_SAMPLES = [
