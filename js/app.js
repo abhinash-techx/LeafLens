@@ -1,5 +1,5 @@
 
-/* PhytoVision AI frontend */
+/* LeafLens AI frontend */
 'use strict';
 
 const API_BASE = 'https://leaflens-datv.onrender.com';
@@ -667,7 +667,7 @@ function buildBilingualReport(data, fileName) {
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>PhytoVision AI Report</title>
+<title>LeafLens AI Report</title>
 
 <style>
 body {
@@ -710,7 +710,7 @@ th {
 
 <body>
 
-<h1>PhytoVision AI</h1>
+<h1>LeafLens AI</h1>
 
 <div class="muted">
 Plant Disease Diagnostic Report / पौध रोग निदान रिपोर्ट
