@@ -1,60 +1,61 @@
-# PhytoVision AI — Plant Leaf Validation & Disease Assistant
+# 🌿 LeafLens – AI-Based Plant Disease Detection and Analysis System
 
-This package preserves the original PhytoVision AI page structure and visual styling while separating HTML, CSS, JavaScript and the backend.
+LeafLens is an AI-powered web application designed to analyze plant leaf images and provide information about possible plant diseases using a Vision AI model.
 
-## Important model/configuration note
-The original uploaded file did **not** contain a trained MobileNetV4 model. Its browser classifier was a colour/HSV heuristic and its bundled ONNX export file was only a random-weight demonstration stub. This package does not pretend that stub is trained.
+The system allows users to upload plant images and receive AI-generated analysis through a simple and user-friendly interface.
 
-This version uses Gemini Vision on the backend for two stages in one request:
-1. Verify whether the image actually contains a recognizable plant leaf.
-2. Only for a valid leaf, return a cautious disease assessment and bilingual English/Hindi report data.
+## 🚀 Project Overview
 
-Non-leaf or uncertain images are rejected, and no disease prediction is produced. A vision API key is required; the app fails closed if it is missing.
+Plant diseases can affect crop quality and agricultural productivity. Identifying possible diseases at an early stage can help users understand plant health conditions.
 
-## Folder structure
-- `index.html` — original UI markup, unchanged layout
-- `css/style.css` — original embedded CSS, separated
-- `js/app.js` — upload, validation UX, API calls, result, history and bilingual report
-- `backend/main.py` — FastAPI API and image validation
-- `backend/.env.example` — API key configuration template
-- `netlify.toml` — static frontend deployment settings
+LeafLens uses a Vision AI model through the Groq API to analyze uploaded plant images and return structured results.
 
-## Run locally (Windows)
-1. Install Python 3.10+.
-2. Open a terminal in this project folder.
-3. Create and activate a virtual environment:
-   ```powershell
-   py -m venv .venv
-   .venv\Scripts\activate
-   ```
-4. Install backend dependencies:
-   ```powershell
-   pip install -r backend/requirements.txt
-   ```
-5. Copy `backend/.env.example` to `backend/.env` and add your Gemini API key.
-6. Start the backend:
-   ```powershell
-   cd backend
-   uvicorn main:app --reload --port 8000
-   ```
-7. In another terminal, from the project root, serve the frontend:
-   ```powershell
-   py -m http.server 5500
-   ```
-8. Open `http://localhost:5500`.
+**The project integrates an existing AI vision model; it does not train a model from scratch.**
 
-The browser calls `http://localhost:8000` by default. For a different API host, set `window.PHYTOVISION_API_URL` before loading `js/app.js`.
+## ✨ Key Features
 
-## Netlify deployment
-Netlify can host the static frontend in this package, but it cannot run this FastAPI server as-is. Deploy the FastAPI backend separately to a Python ASGI host (for example, a service that supports Uvicorn), set `GEMINI_API_KEY` there, and set the frontend API URL to that backend origin.
+- 📷 Plant leaf image upload
+- 🔍 AI-based plant image analysis
+- 🌱 Possible plant disease identification
+- 📊 Structured JSON response
+- 🖥️ Simple and responsive user interface
+- ⚡ FastAPI-based REST API
+- 🖼️ Image validation and processing
+- 📁 Supports JPG, JPEG, PNG and WEBP formats
+- 🔐 API key management using environment variables
+- ☁️ Cloud deployment support
 
-For production, configure `CORS_ORIGINS` to the exact Netlify site origin, e.g. `https://your-site.netlify.app`. Do not put the Gemini key in frontend JavaScript or Netlify public variables.
+## 🛠️ Technologies Used
 
-## Report
-The report opens a print-ready page containing both English and Hindi. Choose **Save as PDF** in the browser print dialog. Hindi rendering depends on a system/browser font with Devanagari support.
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
+- Fetch API
+- FormData
 
-## Limitations
-- Gemini's visual confidence and severity values are estimates, not calibrated probabilities or lab measurements.
-- Similar-looking diseases can be confused. Use a local agriculture expert or lab for confirmation.
-- The backend sends the uploaded image to the configured Gemini API for analysis; do not upload private or sensitive images.
-- API usage may incur charges or be subject to provider quotas.
+### Backend
+- Python
+- FastAPI
+- Uvicorn
+- Requests
+- Python-dotenv
+- Pillow (PIL)
+
+### AI Integration
+- Groq API
+- Qwen Vision Model (`qwen/qwen3.8-27b`)
+
+### Deployment and Version Control
+- GitHub – Source Code Management
+- Netlify – Frontend Hosting
+- Render – Backend Hosting
+
+## 🏗️ System Architecture
+
+```text
+          USER
+            |
+            v
+      LEAFLENS WEBSITE
+     (
